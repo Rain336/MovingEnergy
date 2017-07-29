@@ -1,0 +1,16 @@
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+eclipse.project.name = appName + '-core'
+
+dependencies {
+  compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+  compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
+  compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+  compile "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+  compile "io.github.libktx:ktx-math:$ktxMathVersion"
+  compile "io.github.libktx:ktx-box2d:$ktxBox2dVersion"
+  compile "io.github.libktx:ktx-assets:$ktxAssetsVersion"
+  compile "io.github.libktx:ktx-collections:$ktxCollectionsVersion"
+  compile "io.github.libktx:ktx-app:$ktxAppVersion"
+}
+        
