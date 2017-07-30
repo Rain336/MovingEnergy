@@ -2,9 +2,6 @@ package MovingEnergy.Screens
 
 import MovingEnergy.Player
 import MovingEnergy.createTileBody
-import MovingEnergy.toPixelPos
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.maps.tiled.TiledMap
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer
@@ -14,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer
 import com.badlogic.gdx.physics.box2d.World
 import ktx.app.KtxScreen
 import ktx.box2d.createWorld
+import ktx.box2d.earthGravity
 
 class GameScreen : KtxScreen {
     lateinit var map: TiledMap
@@ -21,18 +19,23 @@ class GameScreen : KtxScreen {
     lateinit var player: Player
     lateinit var world: World
     lateinit var debug: Box2DDebugRenderer
+    var mapWidth: Int = 0
+    var mapHeight: Int = 0
     val camera: OrthographicCamera = OrthographicCamera()
 
     override fun show() {
         map = TmxMapLoader().load("debug/debug.tmx")
         renderer = OrthogonalTiledMapRenderer(map)
-        renderer.setView(camera)
-        world = createWorld()
+        world = createWorld(earthGravity)
         debug = Box2DDebugRenderer()
+        mapWidth = map.properties.get("width", Int::class.java)
+        mapHeight = map.properties.get("height", Int::class.java)
 
-        val x = map.properties.get("playerX", 0, Int::class.java).toFloat()
-        val y = map.properties.get("playerY", 0, Int::class.java).toFloat()
-        player = Player(x.toPixelPos(), y.toPixelPos(), world)
+        camera.setToOrtho(false)
+        val x = map.properties.get("playerX", Int::class.java).toFloat()
+        val y = map.properties.get("playerY", Int::class.java).toFloat() - 3
+        player = Player(x * 32, (mapHeight - y) * 32, world)
+        world.setContactListener(player)
 
         val layer = map.layers[0] as TiledMapTileLayer
         repeat(layer.width) {
@@ -45,13 +48,31 @@ class GameScreen : KtxScreen {
     }
 
     override fun render(delta: Float) {
-        Gdx.gl20.glClearColor(0F, 0F, 0F, 1F)
-        Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT)
+        camera.position.set(player.getX() + (player.getWidth() / 2), player.getY() + (player.getHeight() / 2), 0F)
 
-        world.step(1F / 60F, 6, 2)
+        if(mapWidth * 32 < camera.viewportWidth)
+            camera.position.x = mapWidth * 32 / 2F
+        else if (camera.position.x - camera.viewportWidth / 2 <= 0)
+            camera.position.x = camera.viewportWidth / 2
+        else if(camera.position.x + camera.viewportWidth / 2 >= mapWidth * 32)
+            camera.position.x = mapWidth * 32 - camera.viewportWidth / 2
 
-        camera.lookAt(player.x, player.y, 0F)
+        if(mapHeight * 32 < camera.viewportHeight)
+            camera.position.y = mapHeight * 32 / 2F
+        else if(camera.position.y - camera.viewportHeight / 2 <= 0)
+            camera.position.y = camera.viewportHeight / 2
+        else if(camera.position.y + camera.viewportHeight / 2 >= mapHeight * 32)
+            camera.position.y = mapHeight * 32 - camera.viewportHeight / 2
+
         camera.update()
+        renderer.setView(camera)
+
+        world.step(delta, 6, 2)
+        player.update()
+
+        if(player.getX() < 0 || player.getX() > mapWidth * 32 || player.getY() < 0 || player.getY() > mapHeight * 32)
+            player.kill()
+
         renderer.render()
 
         renderer.batch.begin()
