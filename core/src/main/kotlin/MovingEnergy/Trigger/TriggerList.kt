@@ -36,6 +36,9 @@ class TriggerList(properties: MapProperties) : ArrayList<ITrigger>() {
                 add(ReplaceTrigger(i.replace("replace", "").toInt(), elements))
             }
         }
+
+        if (properties.containsKey("next"))
+            add(EndTrigger())
     }
 
     fun update(level: Level) {

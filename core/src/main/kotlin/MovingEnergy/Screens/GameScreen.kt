@@ -9,18 +9,17 @@ class GameScreen : KtxScreen {
         var deaths = 0
     }
 
-    lateinit var level: Level
-    private var first = true
+    var level: Level? = null
 
     override fun show() {
-        level = Level(Assets.level1)
+        level = Level(Assets.level1, Assets.music1)
     }
 
     override fun render(delta: Float) {
-        level.update(delta)
+        level?.update(delta)
     }
 
     override fun dispose() {
-        level.dispose()
+        level?.dispose()
     }
 }

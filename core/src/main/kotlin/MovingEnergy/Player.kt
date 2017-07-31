@@ -61,6 +61,7 @@ class Player(private val x: Float, private val y: Float, val level: Level) : Con
 
         if (onGround > 0 && jump == 0 && Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             body.applyLinearImpulse(Vector2(0F, body.mass * 10F), body.worldCenter, true)
+            Assets.jump.play()
             energy -= 10
             jump = 15
         }

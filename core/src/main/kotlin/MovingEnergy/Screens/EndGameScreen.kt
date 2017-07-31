@@ -19,6 +19,7 @@ class EndGameScreen : KtxScreen {
                 gdxArrayOf(
                         "Did you know! A dragon matures a the age of 140 years",
                         "That means a human can't even surpass the youth of a dragon.",
+                        "How sad :(",
                         ""
                 )
         )

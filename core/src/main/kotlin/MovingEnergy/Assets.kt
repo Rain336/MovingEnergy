@@ -1,5 +1,7 @@
 package MovingEnergy
 
+import com.badlogic.gdx.audio.Music
+import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.maps.tiled.TiledMap
@@ -15,4 +17,7 @@ object Assets {
     val fira by MovingEnergy.manager.load<BitmapFont>("firamono.fnt")
 
     val level1 by MovingEnergy.manager.load<TiledMap>("level1/level1.tmx")
+
+    val jump by MovingEnergy.manager.load<Sound>("jump.wav")
+    val music1 by MovingEnergy.manager.load<Music>("level1/level1.mp3")
 }

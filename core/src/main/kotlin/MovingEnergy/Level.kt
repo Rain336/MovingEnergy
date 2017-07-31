@@ -2,6 +2,7 @@ package MovingEnergy
 
 import MovingEnergy.Trigger.TriggerList
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.audio.Music
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.maps.tiled.TiledMap
@@ -13,7 +14,7 @@ import ktx.box2d.createWorld
 import ktx.box2d.earthGravity
 
 
-class Level(val map: TiledMap) : Disposable {
+class Level(val map: TiledMap, val music: Music) : Disposable {
     val renderer = OrthogonalTiledMapRenderer(map)
     val player: Player
     val world = createWorld(earthGravity)
@@ -45,6 +46,8 @@ class Level(val map: TiledMap) : Disposable {
         }
 
         map.layers.flatMap { it.objects }.forEach { world.createTrigger(it) }
+
+        music.play()
     }
 
     fun update(delta: Float) {
