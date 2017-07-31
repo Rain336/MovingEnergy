@@ -51,11 +51,11 @@ class Player(private val x: Float, private val y: Float, val level: Level) : Con
 
         if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             if (speed >= 0) speed = -1F
-            else speed = Math.max(speed - 1F, -5F)
+            else speed = Math.max(speed - 1F, -7F)
             body.applyForceToCenter(speed, 0F, true)
         } else if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             if (speed <= 0) speed = 1F
-            else speed = Math.min(speed + 1F, 5F)
+            else speed = Math.min(speed + 1F, 7F)
             body.applyForceToCenter(speed, 0F, true)
         }
 

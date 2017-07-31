@@ -1,8 +1,8 @@
 package MovingEnergy.Trigger
 
-import MovingEnergy.Assets
-import MovingEnergy.Screens.EndGameScreen
 import MovingEnergy.Level
+import MovingEnergy.MovingEnergy
+import MovingEnergy.Screens.EndGameScreen
 
 
 class EndTrigger : ITrigger {
@@ -10,9 +10,9 @@ class EndTrigger : ITrigger {
 
     override fun update(level: Level): Boolean {
         timer++
-        if(timer == 30) {
-            Assets.music1.stop()
-            MovingEnergy.MovingEnergy.setScreen<EndGameScreen>()
+        if (timer == 30) {
+            level.music.stop()
+            MovingEnergy.setScreen<EndGameScreen>()
             return true
         }
         return false

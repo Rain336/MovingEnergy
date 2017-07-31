@@ -37,8 +37,19 @@ class TriggerList(properties: MapProperties) : ArrayList<ITrigger>() {
             }
         }
 
-        if (properties.containsKey("next"))
-            add(EndTrigger())
+        if (properties.containsKey("next")) {
+            val next = properties.get("next")
+            if (next is String) {
+                val split = next.split('|')
+                add(ConditionalSwitchLevelTrigger(split[0].toInt(), split[1].toInt(), split[2].toInt()))
+            } else if (next is Int) {
+                if (next == 0) {
+                    add(EndTrigger())
+                } else {
+                    add(SwitchLevelTrigger(next))
+                }
+            }
+        }
     }
 
     fun update(level: Level) {

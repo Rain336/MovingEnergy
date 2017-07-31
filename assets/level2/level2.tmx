@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.0.2" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="32" tileheight="32" nextobjectid="2">
+ <properties>
+  <property name="bg" type="int" value="7083053"/>
+  <property name="playerX" type="int" value="1"/>
+  <property name="playerY" type="int" value="7"/>
+ </properties>
+ <tileset firstgid="1" source="../level1/level1.tsx"/>
+ <layer name="Layer" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJztnItunDAQRUnVbrvbKMn/f21rZVGcwcDYMwPX5h5pBIm9ZsdH5mFY7tM03TsMFEbKrXXbaD4826IPG/RBH1HQx7It+rBxNR/v/+NDRE8+Hs/QtnW2j5eGQPZxe8aM9CHLZVte58RXvv5I3LLlTfxPUz63pe1rjzoS7ThGJs/7JkKyV04fdvb2VxLN/qp2m611JPSxbIs+bMj9VWldW04fdlrPEdfOG+nDRtS545vYTv53hI/U/gg+vNGMN62P0md/ZiHL6GNJ6scfO6H1sdeODPpY4nl9/mgI8h2vY0NL39LHEvrAgj6woA8s6AML+sCCPrCgDyzoAwv6wMJrfpc+fPCa3019O9+L/L1RL7+fTx9LUl/L5x5k1PrQ3D9G9/GaxZHPF3nN77bM7SL7OOsZL6Rny5CgDyzo4zj29s1/J/ogn9AHFvSBBX1gMaKP/LjcG6P50F6/otLzd5f07iLR+/efGcFFYpQcRsgj0XseI7lI9JzLaC4SveYzootEjzmN6iLRW14ju0j0lNvoLhK95HcFF4kecryKiwR6nldykUDO9WouEqj5Wl28BtWNBtGHx7io+TxSH6x9F+1zclERlZe1bjRbPjT1rNuJgj7athPFqD7edupZtxPFiD483+lJHzpqjucR24liRB9HbCeKXn/3MKqPXqEPLFp8/MnW5e/T1n47SB86WseH5v3XNe2RTyz7q733X9e2R+zHD42LmvauDn1gYd1fldZb2yNtPh7P8vw66p79v7Y98kVL/5X6vuRI2x75guMDi63+++UY9KFjy8fee2Zqgj50HHn/nOzDfsKCPrCgDyzoAwv6wII+sKAPLOgDC/rAgj6w0M51WN4lZZljyd9LfDbyHclRET0f6DEGa9qIeh7Re4611MdH+siXd1Eu5x1Lf2uZ78OshdVHBGf7yJetddfI75fJ8PJR6qOpUFYCcXzky7W61vEhx4mnj5lSn5fqrHnL11F8bN0n8fBRWrZQ4yPv+61xkq+jHD9Kddc+q4HjY5uaY4G3j6jjx4zGx1oZig9N3ZbPzhx5fqXdX6GOj9JxIuJ8N/L6I4IzfFjwaMOKtq9aY2tMl8KSh0ecjVceW/EPy0UnUQ==
+  </data>
+ </layer>
+ <objectgroup name="Trigger">
+  <object id="1" x="1759" y="2657" width="415" height="414">
+   <properties>
+    <property name="next" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -47,6 +47,8 @@ class Level(val map: TiledMap, val music: Music) : Disposable {
 
         map.layers.flatMap { it.objects }.forEach { world.createTrigger(it) }
 
+        music.isLooping = true
+        music.volume = 0.5F
         music.play()
     }
 

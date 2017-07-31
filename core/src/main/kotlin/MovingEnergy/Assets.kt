@@ -17,7 +17,9 @@ object Assets {
     val fira by MovingEnergy.manager.load<BitmapFont>("firamono.fnt")
 
     val level1 by MovingEnergy.manager.load<TiledMap>("level1/level1.tmx")
+    val level2 by MovingEnergy.manager.load<TiledMap>("level2/level2.tmx")
 
     val jump by MovingEnergy.manager.load<Sound>("jump.wav")
     val music1 by MovingEnergy.manager.load<Music>("level1/level1.mp3")
+    val music2 by MovingEnergy.manager.load<Music>("level2/level2.mp3")
 }
